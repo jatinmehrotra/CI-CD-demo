@@ -1,4 +1,3 @@
-org: cmjatin
 app: ci-cddemo
 service: githubActionsDemo
 
