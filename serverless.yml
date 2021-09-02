@@ -1,0 +1,22 @@
+org: cmjatin
+app: ci-cddemo
+service: githubActionsDemo
+
+frameworkVersion: '2'
+
+provider:
+  name: aws
+  runtime: nodejs12.x
+  region: ap-southeast-1
+  lambdaHashingVersion: '20201221'
+
+functions:
+  cicdDemo:
+    handler: serverless.handler
+    events:
+      - http:
+          path: /
+          method: ANY
+      - http:
+          path: /{proxy+}
+          method: ANY
