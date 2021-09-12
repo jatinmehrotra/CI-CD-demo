@@ -1,4 +1,4 @@
-[![codecov](https://codecov.io/gh/jatinmehrotra/CI-CD-demo/branch/main/graph/badge.svg?token=AZW7E219JS)](https://codecov.io/gh/jatinmehrotra/CI-CD-demo)
+<!-- [![codecov](https://codecov.io/gh/jatinmehrotra/CI-CD-demo/branch/main/graph/badge.svg?token=AZW7E219JS)](https://codecov.io/gh/jatinmehrotra/CI-CD-demo) -->
 
 # Github Actions CI/CD Demo
 
