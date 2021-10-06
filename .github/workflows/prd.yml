@@ -36,12 +36,12 @@ jobs:
         run: aws sts get-caller-identity
       - name: Install Serverless Framework
         run: npm install -g serverless       
-      - name: Add profile credentials to ~/.aws/credentials
-        run: |
-            aws configure set aws_access_key_id ${{env.AWS_ACCESS_KEY_ID}} --profile prod
-            aws configure set aws_secret_access_key ${{env.AWS_SECRET_ACCESS_KEY}} --profile prod
-      # - name: Serverless Authentication
-      #   run: sls config credentials --provider aws --key ${{ env.AWS_ACCESS_KEY_ID }} --secret ${{ env.AWS_SECRET_ACCESS_KEY }}
+      # - name: Add profile credentials to ~/.aws/credentials
+      #   run: |
+      #       aws configure set aws_access_key_id ${{env.AWS_ACCESS_KEY_ID}} --profile prod
+      #       aws configure set aws_secret_access_key ${{env.AWS_SECRET_ACCESS_KEY}} --profile prod
+      - name: Serverless Authentication
+        run: sls config credentials --provider aws --key ${{ env.AWS_ACCESS_KEY_ID }} --secret ${{ env.AWS_SECRET_ACCESS_KEY }}
       - name: deploy serverless
         run: sls deploy --stage prod -c production-serverless.yml
         working-directory: ./backend-operations
