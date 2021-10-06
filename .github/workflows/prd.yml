@@ -24,7 +24,7 @@ jobs:
           cache: 'npm'
           cache-dependency-path: ./backend-operations/package-lock.json
       - name: Configure AWS Credentials
-        uses: aws-actions/configure-aws-credentials@master
+        uses: aws-actions/configure-aws-credentials@b8c74de
         with:
           aws-region: ap-southeast-1
           role-to-assume: ${{secrets.ROLE_ARN}}
@@ -36,8 +36,8 @@ jobs:
         run: aws sts get-caller-identity
       - name: Install Serverless Framework
         run: npm install -g serverless       
-      # - name: Serverless Authentication
-      #   run: sls config credentials --provider aws --key ${{ env.AWS_ACCESS_KEY_ID }} --secret ${{ env.AWS_SECRET_ACCESS_KEY }}
+      - name: Serverless Authentication
+        run: sls config credentials --provider aws --key ${{ env.AWS_ACCESS_KEY_ID }} --secret ${{ env.AWS_SECRET_ACCESS_KEY }}
       - name: deploy serverless
         run: sls deploy
         working-directory: ./backend-operations
