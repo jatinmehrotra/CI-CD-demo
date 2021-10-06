@@ -35,9 +35,9 @@ jobs:
       - name: run sts 
         run: aws sts get-caller-identity
       - name: Install Serverless Framework
-        run: |
-          npm install -g serverless
-          sls config credentials --provider aws --key ${{ env.AWS_KEY }} --secret ${{ env.AWS_SECRET }}
+        run: npm install -g serverless       
+      - name: Serverless Authentication
+        run: sls config credentials --provider aws --key ${{ env.AWS_KEY }} --secret ${{ env.AWS_SECRET }}
       - name: deploy serverless
         run: sls deploy
         working-directory: ./backend-operations
