@@ -28,7 +28,7 @@ functions:
       ACCOUNT_ID: ${aws:accountId}
       API_ENDPOINT:
          Ref: ApiGatewayRestApi
-      STAGE_NAME: ${opt:stage, 'dev'}
+      STAGE_NAME: ${opt:stage, 'prod'}
     events:
       - http:
           path: /
