@@ -1,6 +1,7 @@
 app: ci-cddemo
 service: githubActionsDemo
 
+variablesResolutionMode: 20210326
 frameworkVersion: '2'
 
 custom:
