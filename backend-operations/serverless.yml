@@ -25,7 +25,7 @@ functions:
   cicdDemo:
     handler: serverless.handler
     environment:
-      ACCOUNT_ID: ${aws:accountId}
+      ACCOUNT_ID: ${aws:accountId,secret.ACCOUNTID}
       API_ENDPOINT:
          Ref: ApiGatewayRestApi
       STAGE_NAME: ${opt:stage, 'dev'}
