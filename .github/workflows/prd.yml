@@ -33,5 +33,5 @@ jobs:
       - name: Install Serverless Framework
         run: npm install -g serverless
       - name: deploy serverless
-        run: sls deploy
+        run: sls deploy --staging prod
         working-directory: ./backend-operations
