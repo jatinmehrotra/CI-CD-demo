@@ -34,3 +34,4 @@ jobs:
         run: npm install -g serverless
       - name: deploy serverless
         run: sls deploy
+        working-directory: ./backend-operations
