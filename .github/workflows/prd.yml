@@ -28,6 +28,9 @@ jobs:
         with:
           aws-region: ap-southeast-1
           role-to-assume: ${{secrets.ROLE_ARN}}
+      - name: access env
+        run: echo ${{env.AWS_DEFAULT_REGION}}
+        working-directory: ./backend-operations
       - name: run sts 
         run: aws sts get-caller-identity
       # - name: Install Serverless Framework
@@ -35,7 +38,5 @@ jobs:
       - name: deploy serverless
         run: npx sls deploy --staging prod
         working-directory: ./backend-operations
-      - name: access env
-        run: echo ${{env.AWS_DEFAULT_REGION}}
-        working-directory: ./backend-operations
+      
         
