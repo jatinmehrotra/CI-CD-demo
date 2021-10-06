@@ -28,7 +28,7 @@ jobs:
         with:
           aws-region: ap-southeast-1
           role-to-assume: ${{secrets.ROLE_ARN}}
-      - name: access env set
+      - name: access env
         run: echo ${{env.AWS_DEFAULT_REGION}}
         working-directory: ./backend-operations
 
