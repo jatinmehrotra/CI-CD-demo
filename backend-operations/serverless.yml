@@ -3,8 +3,19 @@ service: githubActionsDemo
 
 frameworkVersion: '2'
 
+custom:
+  profiles:
+    dev: default
+    prod: mad
+  redirectBaseUrl:
+    dev: https://trimify.awssensei.tk/
+    prod: https://trym.fi/
+
+
+  
 provider:
   name: aws
+  profile: ${self:custom.profiles.${sls:stage}}
   runtime: nodejs12.x
   region: ap-southeast-1
   lambdaHashingVersion: '20201221'
@@ -12,6 +23,11 @@ provider:
 functions:
   cicdDemo:
     handler: serverless.handler
+    environment:
+      ACCOUNT_ID: ${aws:accountId}
+      API_ENDPOINT:
+         Ref: ApiGatewayRestApi
+      STAGE_NAME: ${opt:stage, 'dev'}
     events:
       - http:
           path: /
