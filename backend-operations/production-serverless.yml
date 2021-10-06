@@ -1,0 +1,27 @@
+app: ci-cddemo
+service: githubActionsDemo
+
+variablesResolutionMode: 20210326
+frameworkVersion: '2'
+  
+provider:
+  name: aws
+  runtime: nodejs12.x
+  region: ap-southeast-1
+  lambdaHashingVersion: '20201221'
+
+functions:
+  cicdDemo:
+    handler: serverless.handler
+    environment:
+      ACCOUNT_ID: ${aws:accountId}
+      API_ENDPOINT:
+         Ref: ApiGatewayRestApi
+      STAGE_NAME: ${opt:stage, 'dev'}
+    events:
+      - http:
+          path: /
+          method: ANY
+      - http:
+          path: /{proxy+}
+          method: ANY
