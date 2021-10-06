@@ -43,7 +43,7 @@ jobs:
       # - name: Serverless Authentication
       #   run: sls config credentials --provider aws --key ${{ env.AWS_ACCESS_KEY_ID }} --secret ${{ env.AWS_SECRET_ACCESS_KEY }}
       - name: deploy serverless
-        run: sls deploy --stage prod
+        run: sls deploy --stage prod -c production-serverless.yml
         working-directory: ./backend-operations
       
         
