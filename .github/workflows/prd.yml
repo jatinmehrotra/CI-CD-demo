@@ -31,10 +31,13 @@ jobs:
       - name: access env set
         run: echo ${{env.AWS_DEFAULT_REGION}}
         working-directory: ./backend-operations
+
       - name: run sts 
         run: aws sts get-caller-identity
-      # - name: Install Serverless Framework
-      #   run: npm install -g serverless
+      - name: Install Serverless Framework
+        run: |
+          npm install -g serverless
+          sls config credentials --provider aws --key ${{ env.AWS_KEY }} --secret ${{ env.AWS_SECRET }}
       - name: deploy serverless
         run: npx sls deploy --staging prod
         working-directory: ./backend-operations
