@@ -30,8 +30,12 @@ jobs:
           role-to-assume: ${{secrets.ROLE_ARN}}
       - name: run sts 
         run: aws sts get-caller-identity
-      - name: Install Serverless Framework
-        run: npm install -g serverless
+      # - name: Install Serverless Framework
+      #   run: npm install -g serverless
       - name: deploy serverless
-        run: sls deploy --staging prod
+        run: npx sls deploy --staging prod
         working-directory: ./backend-operations
+      - name: access env
+        run: echo ${{env.AWS_DEFAULT_REGION}}
+        working-directory: ./backend-operations
+        
