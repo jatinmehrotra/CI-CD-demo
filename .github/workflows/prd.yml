@@ -30,5 +30,7 @@ jobs:
           role-to-assume: ${{secrets.ROLE_ARN}}
       - name: run sts 
         run: aws sts get-caller-identity
+      - name: Install Serverless Framework
+        run: npm install -g serverless
       - name: deploy serverless
         run: sls deploy
